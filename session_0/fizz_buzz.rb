@@ -36,6 +36,22 @@
 #
 # We will raise an `ArgumentError` exception to let the caller know that
 # their function arguments were incorrect.
-def fizz_buzz(n:, x: 3, y: 5)
+def fizz_buzz(n:, x:3, y:5)
+  if(x<=0 or y<=0 or n<0)
+    raise ArgumentError.new("Function arguments are incorrect") #divisibility by 0 or -ve number is not possible
+  end
+  result = []
+  n.times do |time|
+      if (time+1)%x==0 and (time+1)%y==0
+        result[time]="FizzBuzz"
+      elsif (time+1)%x==0
+        result[time]="Fizz"
+      elsif (time+1)%y==0
+        result[time]="Buzz"
+      else result[time]=(time+1).to_s
+
+      end
+  end
+  return result
   raise NotImplementedError # TODO
 end
