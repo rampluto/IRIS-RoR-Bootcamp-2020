@@ -23,10 +23,7 @@ class Item
   # Returns a boolean value whether than item is discounted i.e. the
   # discount deadline has been crossed or not.
   def discounted?
-    if discount_deadline>Time.now
-      return true
-    else return false
-    end
+    return discount_deadline>Time.now
   end
 
   # If the item is discounted, the current price is 
@@ -49,17 +46,12 @@ class Item
   # Note: If there are no items for category, stock price for category
   # should be zero.
   def self.stock_price_by_category(items)
-    result = {
-      1 => 0,
-      2 => 0,
-      3 => 0, 
-      4 => 0,
-    }
+    result = Hash.new
+    (1..4).each do |i|
+      result[i]=0
+    end
     items.each do |item|
-      if result[item.category_id]==0
-        result[item.category_id]=(item.current_price*item.quantity)
-      else result[item.category_id]+=(item.current_price*item.quantity)
-      end
+       result[item.category_id]+=(item.current_price*item.quantity)
     end
     return result
   end
