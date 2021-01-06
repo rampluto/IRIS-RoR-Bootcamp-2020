@@ -40,7 +40,6 @@ def fizz_buzz(n:, x:3, y:5)
   if(x<=0 || y<=0 || n<0)
     raise ArgumentError.new, "Function arguments are incorrect" #divisibility by 0 or -ve number is not possible
   end
-
   array = (1..n).to_a
   array.map do |i|
     if i%x==0 && i%y==0 then
