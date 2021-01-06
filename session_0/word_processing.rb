@@ -27,7 +27,7 @@ end
 def words_with_prefix(prefix, words)
 result=[]
 words.each do |word|
-  if word.include?(prefix)
+  if word.start_with?(prefix)
     result.push(word)
   end
 end
